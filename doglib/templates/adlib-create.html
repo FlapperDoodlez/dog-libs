@@ -1,0 +1,75 @@
+<html>
+
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>dog libs | Create Lib</title>
+        <link href="https://fonts.googleapis.com/css?family=Bree+Serif" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename="styles/style.css") }}">
+        <script type='text/javascript' src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script type='text/javascript' src="{{ url_for('static', filename="js/helpers.js") }}"></script>
+    </head>
+
+    <body>
+        <div class="container">
+            <div class="adlib-form">
+                <div class="adlib-form-title">Create your own lib</div>
+                <div class="adlib-form-body" id="entries">
+                    <form id="adlib_form" method="POST" action="/create_adlib/">
+                        <div class='entry'>
+                            <label>
+                                Title:
+                                <input type='text' name="title" autocomplete="off" placeholder="Sydney J. Harris"></input>
+                            </label>
+                        </div>
+                        <div class='entry'>
+                            <label>
+                                Entries (comma delimited list of entries):
+                                <input type='text' name="entries" autocomplete="off" placeholder="noun,noun,verb"></input>
+                            </label>
+                        </div>
+                        <div class='entry'>
+                            <label>
+                                {% raw %}
+                                Adlib (entries must be replaced with {{0}}, {{1}}, ...):
+                                <textarea name="adlib" autocomplete="off" placeholder="The real danger is not that {{0}} will begin to {{2}} like {{1}} but that {{1}} will begin to {{2}} like {{0}}"></textarea>
+                                {% endraw %}
+                            </label>
+                        </div>
+                    </form>
+                </div>
+                <div class="adlib-form-footer">
+                    <a id="submit-button" class="btn wide green">submit</a>
+                    <div class="adlib-form-inner-footer">
+                        <a id="refresh-button" class="btn wide-small purple">
+                            gimme some libs instead
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+    <script type='text/javascript'>
+        $("#refresh-button").click(function() {
+            window.location.href = "/";
+        });
+
+        // Submit data
+        $("#submit-button").click(function() {
+            var $this = $(this);
+
+            if ($this.hasClass("disabled")) return;
+
+            $this.disable(true);
+
+            // Grab all the words to send
+            validateEntries(function(validation, words) {
+                if (validation == true) {
+                    $("#adlib_form").submit();
+                } else {
+                    $this.disable(false);
+                }
+            });
+        });
+
+    </script>
+</html>

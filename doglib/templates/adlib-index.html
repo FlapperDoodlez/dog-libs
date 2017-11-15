@@ -1,0 +1,79 @@
+<html>
+
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>dog libs</title>
+        <link href="https://fonts.googleapis.com/css?family=Bree+Serif" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename="styles/style.css") }}">
+        <script type='text/javascript' src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script type='text/javascript' src="{{ url_for('static', filename="js/helpers.js") }}"></script>
+    </head>
+
+    <body>
+        <div class="container">
+            <div class="adlib-form">
+                <div class="adlib-form-title">{{ entity.title }}</div>
+                <div class="adlib-form-body" id="entries">
+                    <form id="word_form" method="POST" action="/{{ id }}/solution/">
+                    {% for entry in entity.entries %}
+                        <div class='entry'>
+                            <label>
+                                {{ entry }}:
+                                <input type='text' name="word" autocomplete="off"></input>
+                            </label>
+                        </div>
+                    {% endfor %}
+                    </form>
+                </div>
+                <div class="adlib-form-footer">
+                    <a id="submit-button" class="btn wide green">submit</a>
+                    <div class="adlib-form-inner-footer">
+                        <a id="solution-button" class="btn wide-small purple">
+                            view popular solution
+                        </a>
+                        <span class="adlib-form-or-divider">– OR –</span>
+                        <a id="refresh-button" class="btn wide-small purple">
+                            gimme another one
+                        </a>
+                        <span class="adlib-form-or-divider">– OR –</span>
+                        <a id="create-button" class="btn wide-small purple">
+                            create your own lib
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+    <script type='text/javascript'>
+        $("#create-button").click(function() {
+            window.location.href = "/create";
+        });
+
+        $("#refresh-button").click(function() {
+            location.reload();
+        });
+
+        $("#solution-button").click(function() {
+            window.location.href = "/" + {{ id }} + "/solution";
+        });
+
+        // Submit data
+        $("#submit-button").click(function() {
+            var $this = $(this);
+
+            if ($this.hasClass("disabled")) return;
+
+            $this.disable(true);
+
+            // Grab all the words to send
+            validateEntries(function(validation, words) {
+                if (validation == true) {
+                    $("#word_form").submit();
+                } else {
+                    $this.disable(false);
+                }
+            });
+        });
+
+    </script>
+</html>

@@ -1,0 +1,42 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: doglib-frontend
+  labels:
+    app: doglib
+spec:
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        app: doglib
+        tier: frontend
+    spec:
+      containers:
+      - name: doglib-app
+        image: gcr.io/[YOUR_PROJECT_ID]/doglib
+        imagePullPolicy: Always
+        env:
+        - name: DATADOG_AGENT_HOST_IP
+          valueFrom:
+            fieldRef:
+               fieldPath: status.hostIP
+        - name: DATADOG_TRACE_AGENT_HOSTNAME
+          valueFrom:
+            fieldRef:
+               fieldPath: status.hostIP
+        - name: DATADOG_ENV
+          value: "doglib"
+        - name: DATADOG_SERVICE_NAME
+          value: "doglib-frontend"
+        - name: DATADOG_TRACE_ENABLED
+          value: "true"
+        - name: DATADOG_TRACE_DEBUG
+          value: "true"
+        - name: MY_POD_NAME
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.name
+        ports:
+        - name: http-server
+          containerPort: 8080

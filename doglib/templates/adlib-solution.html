@@ -1,0 +1,54 @@
+<html>
+
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>dog libs | {{ entity.title }}</title>
+        <link href="https://fonts.googleapis.com/css?family=Bree+Serif" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename="styles/style.css") }}">
+        <script type='text/javascript' src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script type='text/javascript' src="{{ url_for('static', filename="js/helpers.js") }}"></script>
+    </head>
+
+    <body>
+        <div class="container">
+            <div class="adlib-solution">
+                <div class="adlib-solution-title">{{ entity.title }}</div>
+                <div class="adlib-solution-body">
+                    <span class='phrase' id="adlib-phrase"><span>
+                </div>
+                <div class="adlib-solution-footer">
+                    <a id="solution-button" class="btn wide-small purple">
+                        view popular solution
+                    </a>
+                    <span class="adlib-solution-or-divider">– OR –</span>
+                    <a id="refresh-button" class="btn wide-small purple">
+                        gimme another one
+                    </a>
+                </div>
+            </div>
+        </div>
+    </body>
+
+    <script type='text/javascript'>
+        var adlib = "{{ entity.adlib }}";
+
+        var word_data = {{ word_data | tojson }};
+
+        // Build word HTML data
+        var words_html = [];
+        for (var i = 0; i < word_data.length; ++i) {
+            words_html[i] = "<span class='word'>" + word_data[i] + "</span>";
+        }
+
+        $("#adlib-phrase").append(adlib.array_format(words_html));
+
+        $("#solution-button").on('click', function() {
+            window.location = window.location.href;
+        });
+
+        $("#refresh-button").on('click', function() {
+            window.location.href = "/";
+        });
+
+    </script>
+</html>
