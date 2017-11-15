@@ -114,6 +114,7 @@ def create_entity(title, adlib, entries):
         entity = datastore.Entity(key=incomplete_key)
 
         with tracer.trace("entity.update", service="datastore") as child_span:
+            entries = [x.strip() for x in entries.split(',')]
             entity.update({
                 'title': title,
                 'adlib': adlib,

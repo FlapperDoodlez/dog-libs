@@ -14,7 +14,7 @@
             <div class="adlib-form">
                 <div class="adlib-form-title">Create your own lib</div>
                 <div class="adlib-form-body" id="entries">
-                    <form id="adlib_form" method="POST" action="/create_adlib/">
+                    <form id="adlib_form" method="POST" action="/create/">
                         <div class='entry'>
                             <label>
                                 Title:
@@ -30,7 +30,7 @@
                         <div class='entry'>
                             <label>
                                 {% raw %}
-                                Adlib (entries must be replaced with {{0}}, {{1}}, ...):
+                                Adlib (entries must be replaced with {0}, {1}, ...):
                                 <textarea name="adlib" autocomplete="off" placeholder="The real danger is not that {{0}} will begin to {{2}} like {{1}} but that {{1}} will begin to {{2}} like {{0}}"></textarea>
                                 {% endraw %}
                             </label>

@@ -8,15 +8,14 @@ from ddtrace import tracer
 from doglib import utils
 
 
-def create_app(config, debug=False):
+def create_app(debug=False):
     app = Flask(__name__)
-    app.config.from_object(config)
 
     app.debug = debug
 
     options = {
-        'api_key': 'YOUR_API_KEY',
-        'app_key': 'YOUR_APP_KEY',
+        'api_key': '[YOUR_API_KEY]',
+        'app_key': '[YOUR_APP_KEY]',
         'statsd_host': os.environ['DATADOG_AGENT_HOST_IP'],
         'statsd_port': 8125
     }
@@ -53,19 +52,17 @@ def create_app(config, debug=False):
             return render_template("404.html"), 404
 
     # Flask create adlib
-    @app.route('/create', methods=['GET', 'POST'])
+    @app.route('/create/', methods=['GET', 'POST'])
     def create_adlib():
 
         if (request.method == 'POST'):
-            json_content = request.get_json()
+            if ('title' in request.form and
+                'adlib' in request.form and
+                'entries' in request.form):
 
-            if ('title' in json_content and
-                'adlib' in json_content and
-                'entries' in json_content):
-
-                utils.create_entity(json_content['title'],
-                                    json_content['adlib'],
-                                    json_content['entries'])
+                utils.create_entity(request.form['title'],
+                                    request.form['adlib'],
+                                    request.form['entries'])
             else:
                 return "error", 500
 
