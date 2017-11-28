@@ -24,7 +24,7 @@ def get_entity(id, kind='adlib'):
 
 
 def process_adlib(id, words_sent):
-    with tracer.trace("utils.process_adlib") as span:
+    with tracer.trace("utils.process_adlib", service="adlib") as span:
         with tracer.trace("client.get", service="datastore") as child_span:
             # Get old adlib data
             client = datastore.Client()

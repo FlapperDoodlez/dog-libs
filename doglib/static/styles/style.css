@@ -41,7 +41,6 @@ body {
 
 .btn.wide-small {
     width: fit-content;
-
     padding: 10px 10px;
     border-radius: 6px;
     font-size: 1em;
@@ -211,17 +210,25 @@ body {
     text-align: center;
 }
 
-.adlib-form-footer, .adlib-solution-footer {
+.adlib-form-footer,
+.adlib-solution-footer {
     margin-top: 45px;
     text-align: center;
 }
 
-.adlib-form-inner-footer {
+.adlib-form-inner-footer,
+.adlib-solution-footer {
     margin-top: 20px;
     text-align: center;
 }
 
-.adlib-form-or-divider, .adlib-solution-or-divider  {
+.adlib-form-inner-footer > *,
+.adlib-solution-footer > * {
+    margin: auto 10px;
+}
+
+.adlib-form-or-divider,
+.adlib-solution-or-divider  {
     margin: 15px 0 15px 0;
     display: block;
 
