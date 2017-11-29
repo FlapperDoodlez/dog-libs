@@ -21,6 +21,12 @@ spec:
           valueFrom:
             fieldRef:
                fieldPath: status.hostIP
+        - name: MY_POD_NAME
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.name
+        - name: DATADOG_TRACE_ENABLED
+          value: "true"
         - name: DATADOG_TRACE_AGENT_HOSTNAME
           valueFrom:
             fieldRef:
@@ -29,14 +35,6 @@ spec:
           value: "doglib"
         - name: DATADOG_SERVICE_NAME
           value: "doglib-frontend"
-        - name: DATADOG_TRACE_ENABLED
-          value: "true"
-        - name: DATADOG_TRACE_DEBUG
-          value: "true"
-        - name: MY_POD_NAME
-          valueFrom:
-            fieldRef:
-              fieldPath: metadata.name
         ports:
         - name: http-server
           containerPort: 8080
