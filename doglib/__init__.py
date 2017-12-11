@@ -14,8 +14,6 @@ def create_app(debug=False):
     app.debug = debug
 
     options = {
-        'api_key': '[YOUR_API_KEY]',
-        'app_key': '[YOUR_APP_KEY]',
         'statsd_host': os.environ['DATADOG_AGENT_HOST_IP'],
         'statsd_port': 8125
     }
