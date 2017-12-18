@@ -100,8 +100,13 @@ def get_random_key(kind='adlib'):
         with tracer.trace("query.fetch", service="datastore") as child_span:
             query_keys_list = list(query.fetch())
 
-        random_index = randint(0, len(query_keys_list) - 1)
-        return query_keys_list[random_index].key
+        query_keys_len = len(query_keys_list)
+
+        if (query_keys_len == 0):
+            return None
+        else:
+            random_index = randint(0, query_keys_len - 1)
+            return query_keys_list[random_index].key
 
 # Create an entity
 def create_entity(title, adlib, entries):

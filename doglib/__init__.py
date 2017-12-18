@@ -27,10 +27,13 @@ def create_app(debug=False):
     def view_index():
         statsd.increment("doglib.index_web_counter", tags=['pod_name:' + os.environ['MY_POD_NAME']])
 
-        id = utils.get_random_key().id_or_name
-        entity = utils.get_entity(id)
-
-        return render_template("adlib-index.html", entity=entity, id=id), 200
+        random_key = utils.get_random_key()
+        if (random_key is None):
+            return render_template("adlib-empty.html"), 200
+        else:
+            id = random_key.id_or_name
+            entity = utils.get_entity(id)
+            return render_template("adlib-index.html", entity=entity, id=id), 200
 
     # Flask adib solution
     @app.route('/<int:id>/solution/', methods=['GET', 'POST'])

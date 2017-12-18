@@ -1,0 +1,31 @@
+<html>
+
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>dog libs</title>
+        <link href="https://fonts.googleapis.com/css?family=Bree+Serif" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename="styles/style.css") }}">
+        <script type='text/javascript' src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script type='text/javascript' src="{{ url_for('static', filename="js/helpers.js") }}"></script>
+    </head>
+
+    <body>
+        <div class="container">
+            <div class="adlib-form">
+                <div class="adlib-form-title">You have no libs!</div>
+                <div class="adlib-form-footer">
+                    <div class="adlib-form-inner-footer">
+                        <a id="create-button" class="btn wide-small purple">
+                            create your own lib
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+    <script type='text/javascript'>
+        $("#create-button").click(function() {
+            window.location.href = "/create";
+        });
+    </script>
+</html>
