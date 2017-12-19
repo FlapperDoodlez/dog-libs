@@ -4,11 +4,11 @@
 ## What is it
 dog-libs is a game where players have to fill in the blanks of phrases and short stories---without knowing what the phrase or short story actually is---resulting in wacky outcomes.
 
-This application was originally created to be used as a sample application as part of a longform guide on monitoring GKE using Datadog. The guide can be found [here][https://datadoghq.com/blog/monitor-google-kubernetes-engine/].
+This application was originally created to be used as a sample application as part of a longform guide on monitoring GKE using Datadog. The guide can be found [here](https://datadoghq.com/blog/monitor-google-kubernetes-engine/).
 
 ## How do I use it?
 
-dog-libs is intended to be deployed on a GKE cluster. Follow the steps listed in [this guide][https://datadoghq.com/blog/monitor-google-kubernetes-engine/] to deploy it :)
+dog-libs is intended to be deployed on a GKE cluster. Follow the steps listed in [this guide](https://datadoghq.com/blog/monitor-google-kubernetes-engine/) to deploy it :)
 
 ### Create an adlib
 
