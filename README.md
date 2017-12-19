@@ -16,12 +16,12 @@ To create an adlib,
 
 1. visit the index page and click on "create your own lib".
 2. give your adlib a name (make sure it doesn't reveal too much of the story).
-###### Old Macdonald
+`Old Macdonald`
 3. list the different entries you want players to submit (separate each entry with a comma).
-###### adjective, noun, animal, noise
+`adjective, noun, animal, noise`
 4. write your lib such that each intended entry is replaced with a `{n}` where `n` is a number corresponding to the entry (`n` is zero-indexed)
-###### {0} Macdonald had a {1}, E-I-E-I-O. And on that {1} he had an {2}, E-I-E-I-O. With a {3} {3} here and a {3} {3} there, here a {3}, there a {3}, everywhere a {3} {3}, {0} Macdonald had a {1}, E-I-E-I-O.
-
+`{0} Macdonald had a {1}, E-I-E-I-O. And on that {1} he had an {2}, E-I-E-I-O. With a {3} {3} here and a {3} {3} there, here a {3}, there a {3}, everywhere a {3} {3}, {0} Macdonald had a {1}, E-I-E-I-O.`
+`
 ### Enter a solution
 
 To enter a solution,
