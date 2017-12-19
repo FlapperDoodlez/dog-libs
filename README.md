@@ -1,7 +1,5 @@
 # dog-libs
 
-![image of dog-libs](https://datadog-prod.imgix.net/img/blog/monitor-google-kubernetes-engine/monitor-google-kubernetes-engine-sample-app.png)
-
 ## What is it
 dog-libs is a game where players have to fill in the blanks of phrases and short stories—without knowing what the phrase or short story actually is—resulting in wacky outcomes.
 
@@ -41,3 +39,7 @@ dog-libs keeps track of what the most popular words are for each entry. To view 
 1. visit the index page to randomly retrieve a submitted adlib
 2. click "view popular" solution
 3. read the adlib with the blanks filled in with the most popular words for that adlib
+
+## Gallery
+---
+![dog-libs index](https://datadog-prod.imgix.net/img/blog/monitor-google-kubernetes-engine/monitor-google-kubernetes-engine-sample-app.png)
