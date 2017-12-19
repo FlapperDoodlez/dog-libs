@@ -2,7 +2,7 @@
 ---
 
 ## What is it
-dog-libs is a game where players have to fill in the blanks of phrases and short stories---without knowing what the phrase or short story actually is---resulting in wacky outcomes.
+dog-libs is a game where players have to fill in the blanks of phrases and short stories—without knowing what the phrase or short story actually is—resulting in wacky outcomes.
 
 This application was originally created to be used as a sample application as part of a longform guide on monitoring GKE using Datadog. The guide can be found [here](https://datadoghq.com/blog/monitor-google-kubernetes-engine/).
 
