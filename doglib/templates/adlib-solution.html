@@ -44,6 +44,10 @@
 
         $("#adlib-phrase").append(adlib.array_format(words_html));
 
+        $("#create-button").on('click', function() {
+            window.location.href = "/create";
+        });
+
         $("#solution-button").on('click', function() {
             window.location = window.location.href;
         });
